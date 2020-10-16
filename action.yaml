@@ -1,0 +1,5 @@
+name: 'reactjs-publish-artifact'
+description: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
