@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-#npm install react-scripts@3.3.0 -g
-#npm install --only=prod
-#npm install typescript
-#
-#source env-${NODIS_DEPLOY_ENV}.sh
-#npm run build
-#
-#tar czvf ${NODIS_ARTIFACT_FILENAME} build
+npm install react-scripts@3.3.0 -g
+npm install --only=prod
+npm install typescript
 
-touch ${NODIS_ARTIFACT_FILENAME}
+source env-${NODIS_DEPLOY_ENV}.sh
+npm run build
 
-aws --debug s3 ls "s3://${NODIS_ARTIFACT_BUCKET}/${NODIS_PROJECT_NAME}/"
+tar czvf ${NODIS_ARTIFACT_FILENAME} build
 
 aws --debug s3 cp ${NODIS_ARTIFACT_FILENAME} "s3://${NODIS_ARTIFACT_BUCKET}/${NODIS_PROJECT_NAME}/"
